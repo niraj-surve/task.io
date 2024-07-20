@@ -1,7 +1,13 @@
 import React, { useRef } from "react";
 import { MdOutlineAddTask } from "react-icons/md";
 
-const TaskInput: React.FC = () => {
+interface Props {
+  task: string;
+  setTask: React.Dispatch<React.SetStateAction<string>>;
+  handleAdd: (e: React.FormEvent) => void;
+}
+
+const TaskInput: React.FC<Props> = ({ task, setTask, handleAdd }: Props) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const handleInput = () => {
@@ -13,11 +19,13 @@ const TaskInput: React.FC = () => {
   };
 
   return (
-    <form className="w-full flex gap-4  rounded-lg border-2 border-secondary">
+    <form onSubmit={handleAdd} className="w-full flex gap-4  rounded-lg border-2 border-secondary">
       <textarea
         ref={textareaRef}
         className="w-full min-h-full p-4 rounded-lg bg-transparent dark:text-white text-sm resize-none overflow-hidden outline-none"
         name="note"
+        value={task}
+        onChange={(e) => setTask(e.target.value)}
         id="note"
         placeholder="Enter the task...."
         rows={1}
