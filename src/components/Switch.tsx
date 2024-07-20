@@ -38,7 +38,7 @@ const Switch = ({setTheme}: props) => {
   }, []);
 
   return (
-    <div className="flex items-center absolute right-10">
+    <div className="flex items-center md:absolute right-10">
       <input
         type="checkbox"
         checked={isDark}
