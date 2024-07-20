@@ -26,7 +26,7 @@ const TaskInput: React.FC = () => {
       <button
         type="submit"
         title="Add Task"
-        className="fade h-10 bg-primary px-3 rounded-lg text-xl m-2 text-white border border-primary hover:border-primary hover:bg-transparent hover:text-primary"
+        className="fade h-10 bg-primary px-3 rounded-lg text-xl m-2 text-white border border-primary hover:border-primary hover:scale-105"
       >
         <MdOutlineAddTask />
       </button>
