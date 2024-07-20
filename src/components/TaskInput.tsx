@@ -13,10 +13,10 @@ const TaskInput: React.FC = () => {
   };
 
   return (
-    <form className="w-full flex gap-4">
+    <form className="w-full flex gap-4  rounded-lg border-2 border-secondary">
       <textarea
         ref={textareaRef}
-        className="w-full min-h-10 px-4 py-2 rounded-lg bg-transparent dark:text-white text-sm resize-none overflow-hidden border-2 border-secondary outline-none"
+        className="w-full min-h-full p-4 rounded-lg bg-transparent dark:text-white text-sm resize-none overflow-hidden outline-none"
         name="note"
         id="note"
         placeholder="Enter the task...."
@@ -26,7 +26,7 @@ const TaskInput: React.FC = () => {
       <button
         type="submit"
         title="Add Task"
-        className="fade w-12 h-10 bg-primary px-3 rounded-lg text-xl text-white border border-primary hover:border-primary hover:bg-transparent hover:text-primary"
+        className="fade h-10 bg-primary px-3 rounded-lg text-xl m-2 text-white border border-primary hover:border-primary hover:bg-transparent hover:text-primary"
       >
         <MdOutlineAddTask />
       </button>
