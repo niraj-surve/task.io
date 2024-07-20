@@ -13,7 +13,7 @@ const Navbar:React.FC = () => {
 
   return (
     <div className='h-[64px] px-4 md:px-64 flex items-center md:justify-center justify-between'>
-        <span className='font-bold text-2xl text-dark dark:text-white'>task.<span className='text-primary'>io</span></span>
+        <span className='font-bold text-2xl text-dark dark:text-white'>task.<span className='text-primary dark:text-secondary'>io</span></span>
         <Switch setTheme={setTheme} />
     </div>
   )
