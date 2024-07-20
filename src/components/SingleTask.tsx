@@ -10,7 +10,8 @@ interface Props {
   setTaskList: React.Dispatch<React.SetStateAction<Task[]>>;
 }
 
-const SingleTask:React.FC<Props> = ({task, taskList, setTaskList}:Props) => {
+// const SingleTask:React.FC<Props> = ({task, taskList, setTaskList}:Props) => {
+const SingleTask:React.FC<Props> = ({task}:Props) => {
   return (
     <div className='w-full text-white bg-primary p-4 rounded-lg cursor-pointer flex justify-between'>
       <div>{task.task}</div>
