@@ -8,6 +8,7 @@ const Navbar:React.FC = () => {
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme-color");
     setTheme(storedTheme);
+    console.log(theme)
   }, []);
 
   return (
