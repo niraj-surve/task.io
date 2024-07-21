@@ -1,13 +1,12 @@
 import React, { useRef } from "react";
 import { MdOutlineAddTask } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../store/store";
+import { addTask, setTask } from "../store/features/taskSlice";
 
-interface Props {
-  task: string;
-  setTask: React.Dispatch<React.SetStateAction<string>>;
-  handleAdd: (e: React.FormEvent) => void;
-}
-
-const TaskInput: React.FC<Props> = ({ task, setTask, handleAdd }: Props) => {
+const TaskInput: React.FC = () => {
+  const dispatch = useDispatch();
+  const task = useSelector((state: RootState) => state.task.task);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const handleInput = () => {
@@ -18,15 +17,22 @@ const TaskInput: React.FC<Props> = ({ task, setTask, handleAdd }: Props) => {
     }
   };
 
+  const handleAdd = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (task) {
+      dispatch(addTask({ id: Date.now(), task, isDone: false }));
+    }
+  };
+
   return (
-    <form onSubmit={handleAdd} className="w-full flex gap-4  rounded-lg border-2 border-secondary">
+    <form onSubmit={handleAdd} className="w-full flex gap-4 rounded-lg border-2 border-secondary">
       <textarea
         ref={textareaRef}
         className="w-full min-h-full p-4 rounded-lg bg-transparent dark:text-white text-sm resize-none overflow-hidden outline-none"
         autoFocus
         name="note"
         value={task}
-        onChange={(e) => setTask(e.target.value)}
+        onChange={(e) => dispatch(setTask(e.target.value))}
         id="note"
         placeholder="Enter the task...."
         rows={1}

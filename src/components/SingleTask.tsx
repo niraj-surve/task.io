@@ -1,26 +1,23 @@
 import React from "react";
-import { Task } from "../model";
 import { FaTrash } from "react-icons/fa";
 import { FaCheck, FaXmark } from "react-icons/fa6";
 import { MdEdit } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { deleteTask, Task, toggleTask } from "../store/features/taskSlice";
 
 interface Props {
   task: Task;
-  taskList: Task[];
-  setTaskList: React.Dispatch<React.SetStateAction<Task[]>>;
 }
 
-const SingleTask: React.FC<Props> = ({
-  task,
-  taskList,
-  setTaskList,
-}: Props) => {
+const SingleTask: React.FC<Props> = ({ task }) => {
+  const dispatch = useDispatch();
+
   const handleDone = (id: number) => {
-    setTaskList(
-      taskList.map((item) =>
-        item.id === id ? { ...item, isDone: !item.isDone } : task
-      )
-    );
+    dispatch(toggleTask(id));
+  };
+
+  const handleDelete = (id: number) => {
+    dispatch(deleteTask(id));
   };
 
   return (
@@ -36,7 +33,7 @@ const SingleTask: React.FC<Props> = ({
       </div>
       <div className="flex gap-3">
         <MdEdit className="text-lg" title="Edit" />
-        <FaTrash title="Delete" />
+        <FaTrash title="Delete" onClick={() => handleDelete(task.id)} />
         {!task.isDone ? (
           <FaCheck title="Done" onClick={() => handleDone(task.id)} />
         ) : (
