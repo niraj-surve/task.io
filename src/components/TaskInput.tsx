@@ -23,6 +23,7 @@ const TaskInput: React.FC<Props> = ({ task, setTask, handleAdd }: Props) => {
       <textarea
         ref={textareaRef}
         className="w-full min-h-full p-4 rounded-lg bg-transparent dark:text-white text-sm resize-none overflow-hidden outline-none"
+        autoFocus
         name="note"
         value={task}
         onChange={(e) => setTask(e.target.value)}
